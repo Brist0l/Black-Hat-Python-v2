@@ -72,8 +72,8 @@ class NetCat:
             client_thread = threading.Thread(
                 target=self.handle, args=(client_socket,))
             client_thread.start()
-    # acts like a client
 
+    # acts like a client
     def send(self):
         self.socket.connect((self.args.target, self.agrs.port))
         if self.buffer:

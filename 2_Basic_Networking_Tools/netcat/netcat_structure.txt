@@ -1,0 +1,24 @@
+netcat can work both like a client and a server.
+
+client:
+    NetCat->send()
+    there is no args.listen so it takes input and stores it in a var called buffer and the buffer is passed as 
+    an argument to NetCat
+    1) connects to the server    
+    2) if there is a buffer then it sends it to the server
+    3) loops until the data has arrived
+
+server:
+    --listen, then netcat acts like a server
+    NetCat->listen()
+    buffer = ''
+    1) Binds the socket and waits for connections
+    2) starts a new thread when a new client connects and jumps to handle()
+    handle():
+        if --execute flag has been called upon it executes the command on the machine the server is running and sends it 
+        to the client
+        if --upload flag has been called upon it will take the input and store it in a bin file
+        with the name given in the flag
+        if --command flag has been called upon it will take start an interface and recv each
+        word and execute until a `\n` is not typed by the client. repeats this until an error
+        pops up.
