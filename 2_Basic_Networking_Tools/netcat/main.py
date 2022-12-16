@@ -34,7 +34,7 @@ class NetCat:
     def handle(self, client_socket):
         if self.args.execute:
             output = execute(self.args.execute)
-            client_socket.send(output.endcode())
+            client_socket.send(output.encode())
         elif self.args.upload:
             file_buffer = b''
             while True:
@@ -75,7 +75,7 @@ class NetCat:
 
     # acts like a client
     def send(self):
-        self.socket.connect((self.args.target, self.agrs.port))
+        self.socket.connect((self.args.target, self.args.port))
         if self.buffer:
             self.socket.send(self.buffer)
         # try/catch block inorder to manually end the connection with a ctrl+c
